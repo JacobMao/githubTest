@@ -16,8 +16,10 @@ struct ContentView: View {
                 RepositoryCell(model: item)
             }
             .listStyle(.plain)
+            .scrollDismissesKeyboard(.immediately)
+        }
+        .alert("Error", isPresented: $viewModel.presentAlert) {
         }
     }
 }
-
 

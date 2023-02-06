@@ -23,6 +23,9 @@ final class ViewModel: ObservableObject {
     @Published
     private(set) var items = [RepositoryItem]()
     
+    @Published
+    var presentAlert = false
+    
     // MARK: Private Properties
     private let dataService: DataServiceProtocol
     
@@ -56,10 +59,11 @@ extension ViewModel {
         currentTask = dataService.requestData(with: keyword)
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { result in
+                receiveCompletion: { [weak self] result in
                     switch result {
                     case .finished: break
-                    case .failure(let error): break
+                    case .failure(let error):
+                        self?.presentAlert = true
                     }
                 },
                 receiveValue: { [weak self] response in
