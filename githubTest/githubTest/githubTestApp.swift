@@ -4,7 +4,7 @@ import SwiftUI
 struct githubTestApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: ViewModel(dataService: DataService()))
         }
     }
 }

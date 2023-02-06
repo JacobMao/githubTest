@@ -2,23 +2,17 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
+    private let viewModel: ViewModel
     
-    
-    
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack(alignment: .trailing) {
+            Section(header: SearchView().environmentObject(viewModel)) {}
         }
-        .padding()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+

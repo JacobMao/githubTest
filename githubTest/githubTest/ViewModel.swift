@@ -1,7 +1,21 @@
 import Foundation
+import SwiftUI
 import Combine
 
 final class ViewModel: ObservableObject {
+    enum Design {
+        enum SearchView {
+            static let padding = EdgeInsets(
+                top: 8,
+                leading: 8,
+                bottom: 0,
+                trailing: 8
+            )
+            
+            static let font = Font.system(size: 20)
+        }
+    }
+    
     // MARK: Public Properties
     @Published
     var searchText = ""
