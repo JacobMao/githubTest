@@ -1,31 +1,21 @@
 import SwiftUI
 
 struct RepositoryCell: View {
-    @State private var model: RepositoryItem
+    @State private var viewModel: RepositoryCellViewModel
     
-    init(model: RepositoryItem) {
-        self.model = model
+    init(viewModel: RepositoryCellViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
         VStack (alignment: .leading) {
-            Text(model.full_name)
-                .font(.system(size: 16))
-                .fontWeight(.bold)
-                .foregroundColor(.blue)
-                .frame(alignment: .center)
-                .multilineTextAlignment(.leading)
-                .lineLimit(1)
-        
-            Text(model.description ?? "")
-                .font(.system(size: 16))
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-                
-            Text("stars: \(model.stargazers_count)" )
-                .font(.system(size: 16))
-                .fontWeight(.bold)
-                .foregroundColor(.gray)
+            viewModel.fullNameText
+                .frame(alignment: ViewModel.Design.Cell.FullName.frameAlignment)
+                .multilineTextAlignment(ViewModel.Design.Cell.FullName.textAlignment)
+                .lineLimit(ViewModel.Design.Cell.FullName.lineLimit)
+            viewModel.descriptionText
+            
+            viewModel.starsText
         }
     }
 }

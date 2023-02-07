@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D5035B9D2991259C00DDD029 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5035B9C2991259C00DDD029 /* DataService.swift */; };
 		D5035B9F29912DD800DDD029 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5035B9E29912DD800DDD029 /* ViewModel.swift */; };
+		D5C145F52992794700325A20 /* RepositoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C145F42992794700325A20 /* RepositoryCellViewModel.swift */; };
 		D5E0A5462991339D0009E174 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E0A5452991339D0009E174 /* SearchView.swift */; };
 		D5E0A548299137B20009E174 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E0A547299137B20009E174 /* RepositoryCell.swift */; };
 		D5E12BBD298FD99B00914454 /* githubTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E12BBC298FD99B00914454 /* githubTestApp.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		D5035B9C2991259C00DDD029 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D5035B9E29912DD800DDD029 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		D5C145F42992794700325A20 /* RepositoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCellViewModel.swift; sourceTree = "<group>"; };
 		D5E0A5452991339D0009E174 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D5E0A547299137B20009E174 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		D5E12BB9298FD99B00914454 /* githubTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = githubTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 				D5035B9E29912DD800DDD029 /* ViewModel.swift */,
 				D5E0A5452991339D0009E174 /* SearchView.swift */,
 				D5E0A547299137B20009E174 /* RepositoryCell.swift */,
+				D5C145F42992794700325A20 /* RepositoryCellViewModel.swift */,
 			);
 			path = githubTest;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			files = (
 				D5E0A5462991339D0009E174 /* SearchView.swift in Sources */,
 				D5035B9D2991259C00DDD029 /* DataService.swift in Sources */,
+				D5C145F52992794700325A20 /* RepositoryCellViewModel.swift in Sources */,
 				D5E12BBF298FD99B00914454 /* ContentView.swift in Sources */,
 				D5E0A548299137B20009E174 /* RepositoryCell.swift in Sources */,
 				D5035B9F29912DD800DDD029 /* ViewModel.swift in Sources */,

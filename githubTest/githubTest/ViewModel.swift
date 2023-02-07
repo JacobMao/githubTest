@@ -14,6 +14,26 @@ final class ViewModel: ObservableObject {
             
             static let font = Font.system(size: 20)
         }
+        
+        enum Cell {
+            fileprivate static let font = Font.system(size: 16)
+            fileprivate static let fontWeight = Font.Weight.bold
+            
+            enum FullName {
+                fileprivate static let color = Color.blue
+                static let frameAlignment = Alignment.center
+                static let textAlignment = TextAlignment.leading
+                static let lineLimit = 1
+            }
+            
+            enum Description {
+                fileprivate static let color = Color.black
+            }
+            
+            enum Stars {
+                fileprivate static let color = Color.gray
+            }
+        }
     }
     
     // MARK: Public Properties
@@ -61,7 +81,7 @@ final class ViewModel: ObservableObject {
     }
 }
 
-// MARK: Public Methods
+// MARK: Request datas Methods
 extension ViewModel {
     func loadData(with keyword: String) {
         currentTask?.cancel()
@@ -82,5 +102,38 @@ extension ViewModel {
                     self?.items = response.items
                 }
             )
+    }
+}
+
+// MARK: Cell viewModel methods
+extension ViewModel {
+    func makeCellViewModel(by item: RepositoryItem) -> RepositoryCellViewModel {
+        return RepositoryCellViewModel(
+            id: item.id,
+            fullNameText: makeFullNameText(item.full_name),
+            descriptionText: makeDescriptionText(item.description ?? ""),
+            starsText: makeStarsText(item.stargazers_count)
+        )
+    }
+    
+    private func makeFullNameText(_ fullName: String) -> Text {
+        Text(fullName)
+            .font(Design.Cell.font)
+            .fontWeight(Design.Cell.fontWeight)
+            .foregroundColor(Design.Cell.FullName.color)
+    }
+    
+    private func makeDescriptionText(_ description: String) -> Text {
+        Text(description)
+            .font(Design.Cell.font)
+            .fontWeight(Design.Cell.fontWeight)
+            .foregroundColor(Design.Cell.Description.color)
+    }
+    
+    private func makeStarsText(_ starsCount: Int) -> Text {
+        Text("stars: \(starsCount)")
+            .font(Design.Cell.font)
+            .fontWeight(Design.Cell.fontWeight)
+            .foregroundColor(Design.Cell.Stars.color)
     }
 }

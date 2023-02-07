@@ -13,7 +13,8 @@ struct ContentView: View {
             Section(header: SearchView().environmentObject(viewModel)) {}
             
             List(viewModel.items) { item in
-                RepositoryCell(model: item)
+                let cellViewModel = viewModel.makeCellViewModel(by: item)
+                RepositoryCell(viewModel: cellViewModel)
             }
             .listStyle(.plain)
             .scrollDismissesKeyboard(.immediately)
