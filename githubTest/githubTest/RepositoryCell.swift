@@ -16,13 +16,11 @@ struct RepositoryCell: View {
                 .frame(alignment: .center)
                 .multilineTextAlignment(.leading)
                 .lineLimit(1)
-            
-            if !model.description.isEmpty {
-                Text(model.description)
-                    .font(.system(size: 16))
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-            }
+        
+            Text(model.description ?? "")
+                .font(.system(size: 16))
+                .fontWeight(.bold)
+                .foregroundColor(.black)
                 
             Text("stars: \(model.stargazers_count)" )
                 .font(.system(size: 16))

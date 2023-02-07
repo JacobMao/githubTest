@@ -4,7 +4,7 @@ import Combine
 struct RepositoryItem: Identifiable, Decodable {
     var id: Int
     var full_name: String
-    var description: String
+    var description: String?
     var stargazers_count: Int
 }
 
@@ -14,8 +14,6 @@ struct ApiResponse: Decodable {
 }
 
 protocol DataServiceProtocol {
-    typealias RequestResult = Result<ApiResponse, Error>
-    
     func requestData(with keyword: String) -> AnyPublisher<ApiResponse, Error>
 }
 

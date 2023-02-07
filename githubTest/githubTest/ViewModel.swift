@@ -17,20 +17,21 @@ final class ViewModel: ObservableObject {
     }
     
     // MARK: Public Properties
-    @Published
-    var searchText = ""
+    @Published var searchText = ""
 
-    @Published
-    private(set) var items = [RepositoryItem]()
+    @Published private(set) var items = [RepositoryItem]()
     
-    @Published
-    var presentAlert = false
+    @Published var presentAlert = false
+    private(set) var latestError: Error?
+    
+    let errorTitle = Text("Error")
     
     // MARK: Private Properties
     private let dataService: DataServiceProtocol
     
     private var currentTask: AnyCancellable?
     private var cancellables = Set<AnyCancellable>()
+    private var latestSearchText = ""
     
     // MARK: Life cycle
     init(dataService: DataServiceProtocol) {
@@ -39,12 +40,22 @@ final class ViewModel: ObservableObject {
         $searchText
             .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .sink { [weak self] value in
-                guard !value.isEmpty else {
-                    self?.items = [RepositoryItem]()
+                guard let strongSelf = self else {
                     return
                 }
                 
-                self?.loadData(with: value)
+                guard value != strongSelf.latestSearchText else {
+                    return
+                }
+                
+                strongSelf.latestSearchText = value
+                
+                guard !value.isEmpty else {
+                    strongSelf.items = [RepositoryItem]()
+                    return
+                }
+                
+                strongSelf.loadData(with: value)
             }
             .store(in: &cancellables)
     }
@@ -63,6 +74,7 @@ extension ViewModel {
                     switch result {
                     case .finished: break
                     case .failure(let error):
+                        self?.latestError = error
                         self?.presentAlert = true
                     }
                 },

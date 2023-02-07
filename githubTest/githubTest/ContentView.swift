@@ -18,7 +18,11 @@ struct ContentView: View {
             .listStyle(.plain)
             .scrollDismissesKeyboard(.immediately)
         }
-        .alert("Error", isPresented: $viewModel.presentAlert) {
+        .alert(isPresented: $viewModel.presentAlert) {
+            return Alert(
+                title: viewModel.errorTitle,
+                message: Text(viewModel.latestError?.localizedDescription ?? "")
+            )
         }
     }
 }
