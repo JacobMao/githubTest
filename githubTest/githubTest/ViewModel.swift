@@ -13,6 +13,9 @@ final class ViewModel: ObservableObject {
             )
             
             static let font = Font.system(size: 20)
+            static let placeholder = "input keyword"
+            static let textAlignment = TextAlignment.center
+            static let style = RoundedBorderTextFieldStyle.roundedBorder
         }
         
         enum Cell {
@@ -70,11 +73,6 @@ final class ViewModel: ObservableObject {
                 
                 strongSelf.latestSearchText = value
                 
-                guard !value.isEmpty else {
-                    strongSelf.items = [RepositoryItem]()
-                    return
-                }
-                
                 strongSelf.loadData(with: value)
             }
             .store(in: &cancellables)
@@ -86,6 +84,11 @@ extension ViewModel {
     func loadData(with keyword: String) {
         currentTask?.cancel()
         currentTask = nil
+        
+        guard !keyword.isEmpty else {
+            items = [RepositoryItem]()
+            return
+        }
         
         currentTask = dataService.requestData(with: keyword)
             .receive(on: DispatchQueue.main)

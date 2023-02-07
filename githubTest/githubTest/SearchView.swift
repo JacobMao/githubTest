@@ -5,11 +5,13 @@ struct SearchView: View {
     var body: some View {
         VStack (alignment: .center) {
             HStack (alignment: .center) {
-                TextField("input keyword", text: $viewModel.searchText)
-                    .textFieldStyle(.roundedBorder)
-                    .multilineTextAlignment(.center)
-                    .padding(ViewModel.Design.SearchView.padding)
-                    .font(ViewModel.Design.SearchView.font)
+                TextField(ViewModel.Design.SearchView.placeholder,
+                          text: $viewModel.searchText
+                )
+                .textFieldStyle(ViewModel.Design.SearchView.style)
+                .multilineTextAlignment(ViewModel.Design.SearchView.textAlignment)
+                .padding(ViewModel.Design.SearchView.padding)
+                .font(ViewModel.Design.SearchView.font)
             }
         }
     }

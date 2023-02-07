@@ -13,6 +13,7 @@ struct RepositoryCell: View {
                 .frame(alignment: ViewModel.Design.Cell.FullName.frameAlignment)
                 .multilineTextAlignment(ViewModel.Design.Cell.FullName.textAlignment)
                 .lineLimit(ViewModel.Design.Cell.FullName.lineLimit)
+            
             viewModel.descriptionText
             
             viewModel.starsText
